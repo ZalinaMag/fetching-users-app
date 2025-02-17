@@ -13,7 +13,7 @@ export default function UserCard({ user }: Props) {
       <p>
         <strong>Address:</strong> {user.address.street} {user.address.suite}<br />
         {user.address.city} {user.address.zipcode}<br />
-        <a
+        <a className="map-button"
           href={`https://www.google.com/maps/search/?api=1&query=${user.address.geo.lat},${user.address.geo.lng}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -24,13 +24,13 @@ export default function UserCard({ user }: Props) {
       <p><strong>Phone:</strong> {user.phone}</p>
       <p>
       <strong>Website:</strong>{" "}
-      <a href={user.website.startsWith("http") ? user.website : `http://${user.website}`} target="_blank" rel="noopener noreferrer">
+      <a className="website-link" href={user.website.startsWith("http") ? user.website : `http://${user.website}`} target="_blank" rel="noopener noreferrer">
         {user.website}
       </a>
       </p>
       <p><strong>Company:</strong> {user.company.name}<br />
-      {user.company.catchPhrase}<br />
-      {user.company.bs}</p>
+      - {user.company.catchPhrase}<br />
+      - {user.company.bs}</p>
     </div>
   );
 }

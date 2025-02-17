@@ -1,10 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { fetchUsers, User } from "../api/users";
 import UserCard from "./UserCard";
+
+
+const titles = ["Mr.", "Mrs.", "Ms.", "Miss"];
+
+const stripTitle = (name: string): string => {
+  for (const title of titles) {
+    const prefix = `${title} `;
+    if (name.startsWith(prefix)) {
+      return name.slice(prefix.length);
+    }
+  }
+  return name;
+}
+
+const sortUsersByName = (users: User[]): User[] => {
+  return [...users].sort((a, b) =>
+    stripTitle(a.name).localeCompare(stripTitle(b.name))
+  );
+};
 
 export default function Users() {
   const [users, setUsers] = useState<User[]>([]);
   const [filter, setFilter] = useState<string>('');
+
+  const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value);
+  };
 
   const filteredUsers = users.filter(user =>
     user.company.name.toLowerCase().startsWith(filter.toLowerCase())
@@ -14,23 +37,8 @@ export default function Users() {
     const loadUsers = async () => {
       const data = await fetchUsers();
 
-      function stripTitle(name: string): string {
-        const titles = ["Mr.", "Mrs.", "Ms.", "Miss"];
-        for (const title of titles) {
-          if (name.startsWith(title + " ")) {
-            return name.slice(title.length + 1);
-          }
-        }
-        return name;
-      }
-      
-      const sortedData = data.sort((a, b) => {
-        const nameA = stripTitle(a.name);
-        const nameB = stripTitle(b.name);
-        return nameA.localeCompare(nameB);
-      });
-
-      setUsers(sortedData);
+      const sortedUsers = sortUsersByName(data);
+      setUsers(sortedUsers);
     };
     loadUsers();
   }, []);
@@ -38,13 +46,13 @@ export default function Users() {
   return (
     <>
       <div className="users-header">
-        <h1>Users</h1>
+        <h1>Users directory</h1>
         <div className="filter-container">
             <input
             type="text"
             placeholder="Filter by company name"
             value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+            onChange={handleFilterChange}
             />
         </div>
       </div>
@@ -53,7 +61,7 @@ export default function Users() {
           <UserCard key={user.id} user={user}/>
           ))
         ) : (
-          <h3>No users were found</h3>
+          <h3>No users found</h3>
         )}
       </div>
     </>
