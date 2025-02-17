@@ -1,4 +1,6 @@
-# This is a React App for fetching mock user data
+# React App for fetching mock user data
+
+This is a test project done for Blancco Junior Frontend Engineer Dev Challenge
 
 ## Getting Started with Create React App
 
