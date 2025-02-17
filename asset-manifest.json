@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ZalinaMag/test-react-app/static/css/main.32e8c904.css",
-    "main.js": "/ZalinaMag/test-react-app/static/js/main.8a814236.js",
-    "static/js/453.2f679600.chunk.js": "/ZalinaMag/test-react-app/static/js/453.2f679600.chunk.js",
-    "index.html": "/ZalinaMag/test-react-app/index.html",
-    "main.32e8c904.css.map": "/ZalinaMag/test-react-app/static/css/main.32e8c904.css.map",
-    "main.8a814236.js.map": "/ZalinaMag/test-react-app/static/js/main.8a814236.js.map",
-    "453.2f679600.chunk.js.map": "/ZalinaMag/test-react-app/static/js/453.2f679600.chunk.js.map"
+    "main.css": "/fetching-users-app/static/css/main.32e8c904.css",
+    "main.js": "/fetching-users-app/static/js/main.a0e2e27f.js",
+    "static/js/453.2f679600.chunk.js": "/fetching-users-app/static/js/453.2f679600.chunk.js",
+    "index.html": "/fetching-users-app/index.html",
+    "main.32e8c904.css.map": "/fetching-users-app/static/css/main.32e8c904.css.map",
+    "main.a0e2e27f.js.map": "/fetching-users-app/static/js/main.a0e2e27f.js.map",
+    "453.2f679600.chunk.js.map": "/fetching-users-app/static/js/453.2f679600.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.32e8c904.css",
-    "static/js/main.8a814236.js"
+    "static/js/main.a0e2e27f.js"
   ]
 }
